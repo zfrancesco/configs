@@ -6,11 +6,15 @@ spring:
     name: gateway-service
   cloud:
     gateway:
-      routes:
-        - id: utente-service
-          uri: lb://utente-service
-          predicates:
-            - Path=/utenti/**
+      server:
+        webflux:
+          routes:
+            - id: utente_service_route
+              uri: lb://UTENTE-SERVICE
+              predicates:
+                - Path=/utenti/**
+              filters:
+                - RewritePath=/utenti/(?<segment>.*), /${segment}
 
 eureka:
   client:
