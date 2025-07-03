@@ -1,2 +1,2 @@
-example.message: Hello from GitHub config!
-
+server:
+  port: 8888
