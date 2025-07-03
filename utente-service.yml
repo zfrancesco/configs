@@ -1,19 +1,7 @@
-server:
-  port: 8081
+utente-service:
+  welcome-message: "Welcome to the Utente Service"
+  version: "1.0.0"
 
-spring:
-  application:
-    name: utente-service
-  datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-  eureka:
-    client:
-      service-url:
-        defaultZone: http://localhost:8761/eureka/
+logging:
+  level:
+    com.example.utenteservice: INFO
