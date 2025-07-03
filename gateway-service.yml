@@ -4,6 +4,27 @@ server:
 spring:
   application:
     name: gateway-service
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+          routes:
+            - id: test_route
+              uri: lb://TEST-SERVICE
+              predicates:
+                - Path=/test/**
+              filters:
+                - RewritePath=/test/(?<segment>.*), /${segment}
+            - id: utente_service_route
+              uri: lb://UTENTE-SERVICE
+              predicates:
+                - Path=/utenti/**
+              filters:
+                - RewritePath=/utenti/(?<segment>.*), /utenti/${segment}
 
 eureka:
   client:
